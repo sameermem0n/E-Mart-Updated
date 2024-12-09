@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <script src="checkout.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <header >
+          
+   <!-- Navbar -->
+        <!-- For small screens (less than 768px) -->
+        <div class="md:hidden">
+            <nav class="flex items-center justify-between px-4 py-2 border-b-2 border-gray-200">
+              <!-- Logo and Brand Name -->
+              <span class="flex items-center">
+                <img class="w-8 h-8" src="Images\logo-symbol.png" alt="Brand Logo">
+                <a class="ml-2 text-xl font-semibold text-blue-400" href="#">E-Mart</a>
+              </span>
+      
+              <!-- Hamburger Icon for Sidebar -->
+              <button id="sidebarToggle" class="text-blue-600 focus:outline-none" onclick="toggleSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </nav>
+      
+            <!-- Search Bar -->
+            <div class="flex justify-center px-1 py-2">
+              <div class="flex items-center w-full max-w-md overflow-hidden bg-white border-2 border-blue-600 rounded-md">
+                <!-- Input Field -->
+                <input type="text" placeholder="Search" class="flex-1 px-2 py-1 text-sm border-none outline-none placeholder:text-xs md:placeholder:text-sm">
+      
+                <!-- Categories Dropdown -->
+                <select name="products" id="products" class="px-1 py-1 text-xs bg-white border-l border-blue-600 outline-none cursor-pointer md:text-sm">
+                  <option value="" selected="">All Categories</option>
+                  <option value="backpack">Backpacks</option>
+                  <option value="smartphone">Smartphones</option>
+                  <option value="laptop">Laptops</option>
+                  <option value="headphones">Headphones</option>
+                  <option value="appliances">Appliances</option>
+                </select>
+      
+                <!-- Search Button -->
+                <button class="px-1 py-2 text-xs text-white bg-blue-600 md:text-sm hover:bg-blue-700">
+                  Search
+                </button>
+              </div>
+            </div>
+      
+            <!-- Sidebar (hidden by default) -->
+            <div id="sidebar" class="fixed top-0 left-0 w-3/4 h-full max-w-xs transition-transform transform -translate-x-full bg-white shadow-lg">
+              <button class="p-4 text-gray-500 hover:text-gray-900" onclick="toggleSidebar()">
+                Close
+              </button>
+              <ul class="px-4">
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">All Categories</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">Orders</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">Hot Offers</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">Gift Boxes</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="#" class="text-gray-700">Help</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      
+          <!-- For larger screens (768px and above) -->
+          <div class="hidden md:block">
+            <nav class="flex items-center px-5 py-2 border-b-2 border-gray-200 md:px-2 justify-evenly">
+              <!-- Brand Logo and Name -->
+              <span class="flex items-center">
+                <img class="w-10 h-10 md:w-7 md:h-7 lg:w-8 lg:h-8" src="Images\logo-symbol.png" alt="Brand Logo">
+                <a class="ml-2 text-2xl font-semibold text-blue-400 md:text-xl md:ml-1" href="index.html">E-Mart</a>
+              </span>
+      
+              <!-- Search Input with Select and Button -->
+              <div class="flex items-center overflow-hidden border-2 border-blue-600 rounded-md max-w-max">
+                <input type="text" placeholder="Search" class="px-2 py-1 border-none outline-none w-90 md:w-56 md:px-2 md:placeholder:text-sm" style="flex: 1">
+                <select name="products" id="products" class="px-3 py-1 bg-white border-0 border-1 border-blue-650 outline-none cursor-pointer md:text-sm">
+                  <option value="" selected=""><a href="prodcut list.html">All Categories</option>
+                  <option value="backpack">Backpacks</option>
+                  <option value="smartphone">Smartphone</option>
+                  <option value="laptop">Laptop</option>
+                  <option value="headphones">Headphones</option>
+                  <option value="appliances">Appliances</option>
+                </select>
+                <button class="px-3 py-1 text-white bg-blue-600">Search</button>
+              </div>
+  
+              <div class="flex items-center space-x-4">
+                 <a href="checkout.html" class="relative">
+                      <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
+                      <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">0</span>
+                  </a>
+                  <a href="#"><img src="https://img.icons8.com/material-outlined/24/000000/user.png" alt="User"></a>
+              </div>
+  
+  
+               <!-- Sidebar (hidden by default) -->
+            <div id="sidebar" class="fixed top-0 left-0 w-3/4 h-full max-w-xs transition-transform transform -translate-x-full bg-white shadow-lg">
+              <button class="p-4 text-gray-500 hover:text-gray-900" onclick="toggleSidebar()">
+                Close
+              </button>
+              <ul class="px-4">
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">All Categories</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">Orders</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">Hot Offers</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="prodcut-list.html" class="text-gray-700">Gift Boxes</a>
+                </li>
+                <li class="py-2 border-b">
+                  <a href="#" class="text-gray-700">Help</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+  
+      </div>
+    
+    </nav>
+    <div class="hidden md:block">
+    <nav class="flex items-center px-5 py-2 border-b-2 border-gray-200 md:px-2 justify-evenly">
+      <!-- Left-side menu -->
+      <ul class="flex items-center space-x-5 md:space-x-2 lg:space-x-3">
+          <li class="cursor-pointer md:text-sm"><a href="index.html">Home</a></li>
+        <li class="cursor-pointer md:text-sm"><a href="prodcut-list.html">All Category</a></li>
+        <li class="cursor-pointer md:text-sm"><a href="prodcut-list.html">Hot Offers</a></li>
+        <li class="cursor-pointer md:text-sm"><a href="prodcut-list.html">Menu Items</a></li>
+        <li>
+          <select name="help" id="help" class="px-1 py-1 bg-white border border-gray-300 rounded outline-none cursor-pointer md:text-xs lg:text-sm">
+            <option value="" selected="">Help</option>
+            <option value="contact">Contact</option>
+            <option value="faq">FAQ</option>
+            <option value="terms">Terms &amp; Conditions</option>
+            <option value="returns">Returns &amp; Exchanges</option>
+            <option value="shipping">Shipping &amp; Delivery</option>
+          </select>
+        </li>
+      </ul>
+  
+      <!-- Right-side options -->
+      <div class="flex items-center space-x-2">
+        <select name="countries" id="countries" class="px-1 py-1 bg-white border border-gray-300 rounded outline-none cursor-pointer md:text-xs lg:text-sm">
+          <option value="english">English, USD</option>
+          <option value="spanish">Spanish, EUR</option>
+          <option value="french">French, EUR</option>
+        </select>
+        <select name="shipping" id="shipping" class="px-1 py-1 bg-white border border-gray-300 rounded outline-none cursor-pointer md:text-xs lg:text-sm">
+          <option value="italy">Ship to, Italy</option>
+          <option value="usa">Ship to, USA</option>
+          <option value="canada">Ship to, Canada</option>
+        </select>
+      </div>
+    </nav>
+  </div>
+  
+    </header>
+
+    <main class="container mx-auto mt-8 p-4 bg-white shadow-md">
+        <!-- Order Summary Section -->
+        <section id="order-summary" class="mb-6">
+            <h2 class="text-lg font-semibold mb-4">Order Summary</h2>
+            <div id="cart-items" class="mb-4">
+                <!-- Dynamic cart items will be rendered here -->
+            </div>
+            <p class="font-bold">Total: <span id="total-price" class="text-blue-500">$0.00</span></p>
+        </section>
+
+        <!-- Shipping Details Form -->
+        <section>
+            <h2 class="text-lg font-semibold mb-4">Shipping Details</h2>
+            <form id="checkout-form" class="space-y-4">
+                <div>
+                    <label for="address" class="block font-medium">Address</label>
+                    <input type="text" id="address" name="address" class="w-full border-gray-300 rounded p-2">
+                </div>
+                <div>
+                    <label for="city" class="block font-medium">City</label>
+                    <input type="text" id="city" name="city" class="w-full border-gray-300 rounded p-2">
+                </div>
+                <div>
+                    <label for="postalCode" class="block font-medium">Postal Code</label>
+                    <input type="text" id="postalCode" name="postalCode" class="w-full border-gray-300 rounded p-2">
+                </div>
+
+                <!-- Payment Method -->
+                <div>
+                    <label class="block font-medium">Payment Method</label>
+                    <div>
+                        <input type="radio" id="credit-card" name="paymentMethod" value="Credit Card">
+                        <label for="credit-card">Credit Card</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="paypal" name="paymentMethod" value="PayPal">
+                        <label for="paypal">PayPal</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded"><a href="confirmation.html"> Order</a></button>
+            </form>
+        </section>
+    </main>
+     <!-- Footer -->
+     <div class="px-4 py-5 bg-gray-100">
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:grid-rows-1">
+          <!-- Brand Section -->
+          <div class="mt-5">
+            <div class="flex items-center">
+              <img src="Images\logo-symbol.png" class="w-9 h-9">
+              <a class="ml-2 text-lg font-semibold text-blue-400" href="#">E-Mart</a>
+            </div>
+            <p class="mt-2 text-xs">
+              Best information about the company which will be helpful for you.
+            </p>
+            <div class="flex items-center mt-2 space-x-1">
+              <a href="#" class="text-center text-white transition duration-300 transform bg-gray-400 rounded-full hover:text-blue-600 hover:scale-125 w-7 h-7">
+                <i class="text-lg fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-center text-white transition duration-300 transform bg-gray-400 rounded-full hover:text-pink-500 hover:scale-125 w-7 h-7">
+                <i class="text-lg fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-center text-white transition duration-300 transform bg-gray-400 rounded-full hover:text-red-600 hover:scale-125 w-7 h-7">
+                <i class="text-lg fab fa-youtube"></i>
+              </a>
+              <a href="#" class="text-center text-white transition duration-300 transform bg-gray-400 rounded-full hover:text-blue-400 hover:scale-125 w-7 h-7">
+                <i class="text-lg fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-center text-white transition duration-300 transform bg-gray-400 rounded-full hover:text-blue-800 hover:scale-125 w-7 h-7">
+                <i class="text-lg fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- About Section -->
+          <div class="mt-5">
+            <h1 class="mb-2 text-lg font-semibold">About</h1>
+            <p class="footer-link">About Us</p>
+            <p class="footer-link">Find Store</p>
+            <p class="footer-link">Categories</p>
+            <p class="footer-link">Blogs</p>
+          </div>
+
+          <!-- Partnership Section -->
+          <div class="mt-5">
+            <h1 class="mb-2 text-lg font-semibold">Partnership</h1>
+            <p class="footer-link">About Us</p>
+            <p class="footer-link">Find Store</p>
+            <p class="footer-link">Categories</p>
+            <p class="footer-link">Blogs</p>
+          </div>
+
+          <!-- Information Section -->
+          <div class="mt-5">
+            <h1 class="mb-2 text-lg font-semibold">Information</h1>
+            <p class="footer-link">Help Center</p>
+            <p class="footer-link">Money Refund</p>
+            <p class="footer-link">Shipping</p>
+            <p class="footer-link">Contact Us</p>
+          </div>
+
+          <!-- User Section -->
+          <div class="mt-5">
+            <h1 class="mb-2 text-lg font-semibold">For Users</h1>
+            <p class="footer-link">Login</p>
+            <p class="footer-link">Register</p>
+            <p class="footer-link">Settings</p>
+            <p class="footer-link">My Orders</p>
+          </div>
+
+          <!-- Get App Section -->
+          <div class="mt-5">
+            <h1 class="mb-2 text-lg font-semibold">Get App</h1>
+            <img src="Images\app store.png" alt="App Store" class="mb-2 w-28">
+            <img src="Images\google store.png" alt="Google Play" class="w-28">
+          </div>
+        </div>
+      </div>
+
+      <!-- CopyRight -->
+      <div class="py-2 bg-gray-200">
+        <div class="flex flex-col items-center justify-between mx-3 sm:flex-row">
+          <!-- Footer Text -->
+          <h1 class="mb-2 text-xs sm:mb-0">© 2023 E-Mart</h1>
+          <!-- Language Selector -->
+          <select name="language" id="language" class="px-2 py-1 text-xs bg-white border border-gray-300 rounded outline-none cursor-pointer">
+            <img src="Images\US.png">
+            <option value="english">English
+                
+            </option>
+            <option value="french">French</option>
+            <option value="spanish">Spanish</option>
+          </select>
+        </div>
+      </div>
+    </main>
+</body>
+</html>
